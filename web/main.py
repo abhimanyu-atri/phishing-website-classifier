@@ -13,6 +13,7 @@ dt = pickle.load(open(decisionTree1, 'rb'))
 kn = pickle.load(open('./model/knn.sav', 'rb'))
 nb = pickle.load(open(naiveBayes1, 'rb'))
 sv = pickle.load(open(svm, 'rb'))
+rand = pickle.load(open('./model/random.sav', 'rb'))
 pca = pickle.load(open('./model/pca.pkl','rb'))
 
 def main():
@@ -54,15 +55,18 @@ def main():
     result2=kn.predict([[having_IP_Address, url_Length, shortining_Service, having_At_Symbol, double_slash_redirecting, prefix_Suffix, having_Sub_Domain, ssl_final_State, domain_registeration_length, favicon, port, https_token, request_URL, url_of_Anchor, links_in_tags, sfh, submitting_to_email, abnormal_URL, redirect, on_mouseover, rightClick, popUpWidnow, iframe, age_of_domain, dNSRecord, web_traffic, page_Rank, google_Index, links_pointing_to_page, statistical_report]])
     result3=nb.predict([[having_IP_Address, url_Length, shortining_Service, having_At_Symbol, double_slash_redirecting, prefix_Suffix, having_Sub_Domain, ssl_final_State, domain_registeration_length, favicon, port, https_token, request_URL, url_of_Anchor, links_in_tags, sfh, submitting_to_email, abnormal_URL, redirect, on_mouseover, rightClick, popUpWidnow, iframe, age_of_domain, dNSRecord, web_traffic, page_Rank, google_Index, links_pointing_to_page, statistical_report]])
     result4=sv.predict([[having_IP_Address, url_Length, shortining_Service, having_At_Symbol, double_slash_redirecting, prefix_Suffix, having_Sub_Domain, ssl_final_State, domain_registeration_length, favicon, port, https_token, request_URL, url_of_Anchor, links_in_tags, sfh, submitting_to_email, abnormal_URL, redirect, on_mouseover, rightClick, popUpWidnow, iframe, age_of_domain, dNSRecord, web_traffic, page_Rank, google_Index, links_pointing_to_page, statistical_report]])
-
+    result5=rand.predict([[having_IP_Address, url_Length, shortining_Service, having_At_Symbol, double_slash_redirecting, prefix_Suffix, having_Sub_Domain, ssl_final_State, domain_registeration_length, favicon, port, https_token, request_URL, url_of_Anchor, links_in_tags, sfh, submitting_to_email, abnormal_URL, redirect, on_mouseover, rightClick, popUpWidnow, iframe, age_of_domain, dNSRecord, web_traffic, page_Rank, google_Index, links_pointing_to_page, statistical_report]])
+    'Legitimate website' if result1[0] == 1 else "Suspicious website" if result1[0] == 0 else "Phishing website"
     print(result1)
     print(result2)
     print(result3)
     print(result4)
-  lt.success('Decision tree predicts {}'.format(result1[0]))
-  lt.success('Knn predicts {}'.format(result2[0]))
-  lt.success('Naive Bayes predicts {}'.format(result3[0]))
-  lt.success('SVM predicts {}'.format(result4[0]))
+    print(result5)
+  lt.success('Decision tree predicts {}'.format('Legitimate website' if result1[0] == 1 else "Suspicious website" if result1[0] == 0 else "Phishing website"))
+  lt.success('Knn predicts {}'.format('Legitimate website' if result2[0] == 1 else "Suspicious website" if result2[0] == 0 else "Phishing website"))
+  lt.success('Naive Bayes predicts {}'.format('Legitimate website' if result3[0] == 1 else "Suspicious website" if result3[0] == 0 else "Phishing website"))
+  lt.success('SVM predicts {}'.format('Legitimate website' if result4[0] == 1 else "Suspicious website" if result4[0] == 0 else "Phishing website"))
+  lt.success('Random Forest predicts {}'.format('Legitimate website' if result5[0] == 1 else "Suspicious website" if result5[0] == 0 else "Phishing website"))
 
 if __name__ == '__main__':
   main()
