@@ -7,9 +7,6 @@ import tldextract
 import requests
 import OpenSSL
 import ssl
-# from sklearn.decomposition import PCA
-  
-# pca = PCA(n_components=28)
 
 def Validate_IP(IP):
 
@@ -108,17 +105,19 @@ def Count_redirects(url):
 #   delta = timestamp - today
 #   print (delta.days)
 
-decisionTree1 = './model/decisionTree.sav'
-knn1 = './model/knn.sav'
-naiveBayes1 = './model/naiveBayes.sav'
-svm = './model/svm.sav'
+decisionTree1 = './web/model/decisionTree.sav'
+knn1 = './web/model/knn.sav'
+naiveBayes1 = './web/model/naiveBayes.sav'
+svm = './web/model/svm.sav'
+rand1 = './web/model/random.sav'
+pca1 = './web/model/pca.pkl'
 
 dt = pickle.load(open(decisionTree1, 'rb'))
-kn = pickle.load(open('./model/knn.sav', 'rb'))
+kn = pickle.load(open(knn1, 'rb'))
 nb = pickle.load(open(naiveBayes1, 'rb'))
 sv = pickle.load(open(svm, 'rb'))
-rand = pickle.load(open('./model/random.sav', 'rb'))
-pca = pickle.load(open('./model/pca.pkl','rb'))
+rand = pickle.load(open(rand1, 'rb'))
+pca = pickle.load(open(pca1,'rb'))
 
 def main():
   having_IP_Address = 1
@@ -134,7 +133,6 @@ def main():
   lt.title("Phishing website predictor")
   url = lt.text_input("Enter URL")
   if lt.button("Enter"):
-    print("")
     having_IP_Address=int(Validate_IP(url))
     # =int(Validate_Length(url))
     shortining_Service, url_Length = Validate_Tiny_URL(url)
@@ -150,7 +148,7 @@ def main():
     # print(url_Length)
     # print(double_slash_redirecting)
     # print(prefix_Suffix)
-    print(redirect)
+    # print(redirect)
   ssl_final_State=int(lt.text_input("ssl", value="1"))
   domain_registeration_length=int(lt.text_input("domain registration", value="-1"))
   favicon=int(lt.text_input("favicon", value="1"))
