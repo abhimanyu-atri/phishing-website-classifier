@@ -26,19 +26,19 @@ Pickle
 ## **Result**
 Following are the result of hyperparameter tuning and algoritms applied.
 **K Nearest Neighbour**
-<img src"\results\KNN.png">
+<img src="results/KNN.png"/>
 
 **Naive bayes**
-<img src"\results\NB.png">
+<img src="results/NB.png"/>
 
 **Support Vector Machine**
-<img src"\results\SVM.png">
+<img src="results/SVM.png"/>
 
 **Decision Tree**
-<img src"\results\DT.png">
+<img src="results/DT.png"/>
 
 **Random Forest**   
-<img src"\results\RF.png">
+<img src="results/RF.png"/>
 
 ## Command
 jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace notebooks/*.ipynb
